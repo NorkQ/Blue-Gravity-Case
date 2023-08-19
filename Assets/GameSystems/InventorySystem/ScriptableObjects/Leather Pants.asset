@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 076fb5cc753559d4ea5590b8edf03401, type: 3}
-  m_Name: Apple
+  m_Name: Leather Pants
   m_EditorClassIdentifier: 
-  ItemIcon: {fileID: 21300000, guid: 5c99ae1e6ada67540bb7da32fb57884d, type: 3}
-  ItemName: Apple
-  ItemPrice: 5
-  ItemDescription: It's a fruit you can find in abundance around here. If only I
-    hadn't collected them all. It will give you some relief.
+  ItemIcon: {fileID: 21300000, guid: 1d311e68b56fd7e40b2a833e1aed988f, type: 3}
+  ItemName: Leather Pants
+  ItemPrice: 100
+  ItemDescription: You can't travel without legs. Protect them well.

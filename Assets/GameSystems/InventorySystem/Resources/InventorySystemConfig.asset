@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6447ff79e9b73c648ac1b5d712e36d39, type: 3}
+  m_Name: InventorySystemConfig
+  m_EditorClassIdentifier: 
+  Debug: 0
+  Input: 0
+  Gameplay: 0
+  UI: 0
+  Player: 0
+  Camera: 0
+  Tweens: 0

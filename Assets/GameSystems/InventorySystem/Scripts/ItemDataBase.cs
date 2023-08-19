@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using DG.Tweening;
 
-[CreateAssetMenu(menuName = "Pipoza/Scriptable Object/Item Data", fileName = "New Skill Data")]
+[CreateAssetMenu(menuName = "Pipoza/Scriptable Object/Item Data", fileName = "New Item Data")]
 public class ItemDataBase : ScriptableObject
 {
 
@@ -13,4 +13,7 @@ public class ItemDataBase : ScriptableObject
     public int ItemPrice;
 
     [TextArea] public string ItemDescription;
+
+    [HorizontalGroup("Booleans")]
+    public bool IsCollectible;
 }
