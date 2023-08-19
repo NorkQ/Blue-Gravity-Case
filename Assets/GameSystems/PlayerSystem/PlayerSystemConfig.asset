@@ -19,6 +19,6 @@ MonoBehaviour:
   AnimatorDirectionValueID: Direction
   Gameplay: 0
   UI: 0
-  MovementSpeed: 2
+  MovementSpeed: 3
   Camera: 0
   Tweens: 0
