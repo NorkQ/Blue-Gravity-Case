@@ -49,16 +49,16 @@ public class UI_ShopPanel : UIBase {
         m_SellerNameText.text = i_SellerData.SellerName;
         m_SellerQuoteText.text = i_SellerData.SellerQuote;
 
-        ShopUIItem[] shopUIElements = gameObject.GetComponentsInChildren<ShopUIItem>();
+        ShopUIListElement[] shopUIElements = gameObject.GetComponentsInChildren<ShopUIListElement>();
 
-        foreach(ShopUIItem shopUIElement in shopUIElements)
+        foreach(ShopUIListElement shopUIElement in shopUIElements)
         {
             Destroy(shopUIElement.gameObject);
         }
 
         foreach(ItemDataBase item in i_SellerData.SellerItems)
         {
-            ShopUIItem uiItem = Instantiate(m_ShopSystemConfig.ItemElementPrefab, m_ScrollContentParent);
+            ShopUIListElement uiItem = Instantiate(m_ShopSystemConfig.ItemElementPrefab, m_ScrollContentParent);
             uiItem.Initialize(item);
         }
     }

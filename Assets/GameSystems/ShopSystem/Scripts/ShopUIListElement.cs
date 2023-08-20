@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ShopUIItem : MonoBehaviour, IPointerClickHandler {
+public class ShopUIListElement : MonoBehaviour, IPointerClickHandler {
  
     [Title("Refs")]
     [SerializeField, ReadOnly] private Image m_ItemIconImage;
@@ -14,6 +14,9 @@ public class ShopUIItem : MonoBehaviour, IPointerClickHandler {
     [SerializeField, ReadOnly] private TMP_Text m_ItemPriceText;
 
     private ItemDataBase m_MyItemData;
+
+    public delegate void ItemBuyAction(ShopUIListElement i_ItemUIShop);
+    public static event ItemBuyAction OnItemBuy;
 
     #region Getters and setters
     #endregion
@@ -38,5 +41,6 @@ public class ShopUIItem : MonoBehaviour, IPointerClickHandler {
     {
         // Para harcanacak
         Inventory.Instance.AddItem(m_MyItemData);
+        OnItemBuy?.Invoke(this);
     }
 }

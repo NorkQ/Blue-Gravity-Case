@@ -18,7 +18,7 @@ public class ShopSystemConfig : GlobalConfig<ShopSystemConfig> {
     public float Gameplay;
 
     [Title("UI")]
-    public ShopUIItem ItemElementPrefab;
+    public ShopUIListElement ItemElementPrefab;
 
     [Title("Player")]
     public float Player;

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 551d605673b58034eb3bd45a57a4e2e6, type: 3}
-  m_Name: AlexMemedov
+  m_Name: KevinSlade
   m_EditorClassIdentifier: 
   SellerIcon: {fileID: 1167055706, guid: abda0776680c41c44b66ed94f33b8a42, type: 3}
-  SellerName: Alex Memedov
-  SellerQuote: Hi traveler, how can I help you? I'm sure you'll find something here!
+  SellerName: Kevin Slade
+  SellerQuote: I have the best armors!
   SellerItems:
-  - {fileID: 11400000, guid: 1fbe2285e0e4f1047981d830ba3b2be1, type: 2}
-  - {fileID: 11400000, guid: 66e847def482e4846bd8794d9a1622c3, type: 2}
-  - {fileID: 11400000, guid: 746bc6a3956ef424e8bcf547e81c3d39, type: 2}
+  - {fileID: 11400000, guid: e4b7160162f03124ca7f64e74a7e9e1d, type: 2}
+  - {fileID: 11400000, guid: 8fa1103289d57de4c8f571c05e2551ea, type: 2}
+  - {fileID: 11400000, guid: 6638930cd6efce54e9fef7ecc70ad793, type: 2}

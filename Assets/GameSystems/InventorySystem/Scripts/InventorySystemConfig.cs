@@ -17,6 +17,7 @@ public class InventorySystemConfig : GlobalConfig<InventorySystemConfig> {
     [Title("Gameplay")]
     public int InventorySize;
     public ItemUI ItemUIPrefab;
+    public ItemUIShop ItemUIShopPrefab;
 
     [Title("UI")]
     public float UI;

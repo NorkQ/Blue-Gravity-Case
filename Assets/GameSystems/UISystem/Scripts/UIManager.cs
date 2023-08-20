@@ -21,6 +21,10 @@ public class UIManager : Singleton<UIManager> {
     public delegate void UICloseAction(string i_Name);
     public static event UICloseAction OnUIClose;
 
+    // Additional Events for This Project
+    public delegate void OpenInventoryAction();
+    public static event OpenInventoryAction OnOpenInventory;
+
     #region Getters and setters
     #endregion
 
@@ -45,6 +49,15 @@ public class UIManager : Singleton<UIManager> {
         foreach(UIBase ui in panels)
         {
             ui.gameObject.SetActive(true);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            OpenUI(typeof(UI_InventoryPanel));
+            OnOpenInventory?.Invoke();
         }
     }
 
