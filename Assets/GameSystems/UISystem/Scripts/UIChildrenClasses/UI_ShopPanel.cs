@@ -51,6 +51,7 @@ public class UI_ShopPanel : UIBase {
 
         ShopUIListElement[] shopUIElements = gameObject.GetComponentsInChildren<ShopUIListElement>();
 
+        // Destroy old list and create it again by seller data
         foreach(ShopUIListElement shopUIElement in shopUIElements)
         {
             Destroy(shopUIElement.gameObject);

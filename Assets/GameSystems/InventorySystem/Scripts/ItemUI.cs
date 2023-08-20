@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using DG.Tweening;
 using UnityEngine.UI;
  
+// Item cell in the inventory panel. Not slot
 public class ItemUI : MonoBehaviour {
  
     [Title("Refs")]

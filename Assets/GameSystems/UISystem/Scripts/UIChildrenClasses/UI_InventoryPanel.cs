@@ -32,8 +32,11 @@ public class UI_InventoryPanel : UIBase {
     {
         base.OnEnable();
         m_CloseButton.onClick.AddListener(() => UIManager.Instance.OpenUI(typeof(UI_GamePanel)));
+
+        // Update inventory and equipment cells when enable
         updateAll();
 
+        // Update inventory and equipment cells when player equip-unequip something
         Inventory.OnEquipItem += (ItemDataEquippable i_ItemData) => updateAll();
         Inventory.OnUnequipItem += (ItemDataEquippable i_ItemData) => updateAll();
     }
@@ -117,11 +120,13 @@ public class UI_InventoryPanel : UIBase {
 
     private void updateEquipmentPanel()
     {
+        // Remove all item UI from equipment panel. They will be created again. (refreshing)
         foreach(EquipmentSlot equipmentSlot in m_EquipmentSlots)
         {
             equipmentSlot.RemoveMyItem();
         }
 
+        // Re-create item UI by inventory.
         foreach(ItemDataEquippable itemData in Inventory.Instance.Equipments)
         {
             ItemUI itemUI = Instantiate(m_InventorySystemConfig.ItemUIPrefab);

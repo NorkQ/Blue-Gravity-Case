@@ -42,6 +42,7 @@ public class UI_ShopListInfobox : UIBase {
         //m_Transform.position = UIManager.Instance.MousePosToUIPos();
     }
 
+    // Update description text when open
     private void update(string i_Warning)
     {
         m_InfoText.text = i_Warning;

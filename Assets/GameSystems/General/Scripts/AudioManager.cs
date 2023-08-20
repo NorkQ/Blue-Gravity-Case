@@ -16,6 +16,7 @@ public class AudioManager : Singleton<AudioManager> {
     [Button]
     private void setRefs() 
     {
+        // Do not include first audiosource
         m_AudioSources = gameObject.GetComponentsInChildren<AudioSource>().Where(x => x.gameObject != gameObject).ToArray();
         m_AmbientAudioSource = gameObject.GetComponent<AudioSource>();
     }
@@ -35,6 +36,7 @@ public class AudioManager : Singleton<AudioManager> {
         UIManager.OnUIOpen -= playAmbientByPanel;
     }
 
+    // Find an audio source that not in use
     private AudioSource getAudioSourceInIdle()
     {
         foreach(AudioSource source in m_AudioSources)
@@ -61,6 +63,7 @@ public class AudioManager : Singleton<AudioManager> {
         }
     }
 
+    // Decrease previous ambient music's volume smoothly than play new one
     public void PlayAmbientMusic(AudioClip i_Clip)
     {
         m_AmbientAudioSource.DOFade(0, 0.7f).OnComplete(

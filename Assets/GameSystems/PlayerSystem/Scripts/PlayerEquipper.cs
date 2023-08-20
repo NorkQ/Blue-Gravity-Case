@@ -35,6 +35,7 @@ public class PlayerEquipper : MonoBehaviour {
     {
     }
 
+    // Change character sprites to target item sprite by item type (head, body, legs)
     private void onEquipItem(ItemDataEquippable i_ItemData)
     {
         switch (i_ItemData.EquippableType)
@@ -51,6 +52,7 @@ public class PlayerEquipper : MonoBehaviour {
         }
     }
 
+    // Change character sprites to default by item type
     private void onUnequipItem(ItemDataEquippable i_ItemData)
     {
         switch (i_ItemData.EquippableType)

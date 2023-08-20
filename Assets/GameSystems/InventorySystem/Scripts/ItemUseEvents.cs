@@ -25,23 +25,27 @@ public class ItemUseEvents : MonoBehaviour {
         InventorySlot.OnItemUse -= onItemUse;
     }
 
+    // When we click on the items in inventory panel, this method will run.
     private void onItemUse(InventorySlot i_InventorySlot, ItemDataBase i_ItemData)
     {
-        if (i_ItemData.UseSoundEffect != null) AudioManager.Instance.PlaySFX(i_ItemData.UseSoundEffect);
+        // Play item use sound effect like equip, eat etc.
+        AudioManager.Instance.PlaySFX(i_ItemData.UseSoundEffect);
 
+        // If clicked an equipment item
         if(i_ItemData is ItemDataEquippable)
         {
-            // If player clicked inventory slot, we'll unequip it.
+            // If player clicked an inventory slot, we'll unequip it.
             if(UIManager.Instance.FindEquipmentSlotByType((i_ItemData as ItemDataEquippable).EquippableType) == i_InventorySlot)
             {
                 Inventory.Instance.UnequipItem(i_ItemData);
             }
-            // If not, we'll unequip current item and equip this.
+            // If player didn't click an equipment slot (clicked an inventory slot), we'll unequip current item and equip this.
             else
             {
                 Inventory.Instance.EquipItem(i_ItemData);
             }
         }
+        // If clicked a non-equipment item
         else
         {
             Inventory.Instance.RemoveItem(i_ItemData);

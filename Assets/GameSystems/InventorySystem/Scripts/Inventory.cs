@@ -8,8 +8,13 @@ public class Inventory : Singleton<Inventory> {
 
     [Title("Refs")]
 
+    // Unequipped items
     private List<ItemDataBase> m_Items = new List<ItemDataBase>();
+
+    // Equipped items
     private List<ItemDataBase> m_Equipments = new List<ItemDataBase>();
+
+    // All items
     private List<ItemDataBase> m_AllItems = new List<ItemDataBase>();
 
     public delegate void ItemEquipAction(ItemDataEquippable i_ItemDataEquippable);
@@ -32,6 +37,7 @@ public class Inventory : Singleton<Inventory> {
     
     public void AddItem(ItemDataBase i_Item)
     {
+        // We can add item if max size not reached
         if (m_Items.Count >= m_InventorySystemConfig.InventorySize) return;
         m_Items.Add(i_Item);
     }
@@ -48,8 +54,8 @@ public class Inventory : Singleton<Inventory> {
     public void EquipItem(ItemDataBase i_Item)
     {
         if (!(i_Item is ItemDataEquippable)) return;
-        // If slot is filled, we'll unequip current item
 
+        // If equipment slot is filled, we'll unequip current item. Than we can equip new item this way.
         EquipmentSlot equipmentSlot = UIManager.Instance.FindEquipmentSlotByType((i_Item as ItemDataEquippable).EquippableType);
         if (equipmentSlot.SlotStatus == eSlotStatus.Filled)
         {

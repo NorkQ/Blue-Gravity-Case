@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Debug: 0
   Input: 0
-  StartingMoneyAmount: 10000
+  StartingMoneyAmount: 5
   UI: 0
   Player: 0
   Camera: 0

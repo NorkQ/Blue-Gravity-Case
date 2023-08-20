@@ -6,7 +6,7 @@ using UnityEditor;
 
 [CreateAssetMenu(menuName = "Pipoza/Config/PlayerSystemConfig", fileName = "PlayerSystemConfig")]
 [Config]
-public class PlayerSystemConfig : GlobalConfig<PlayerSystemConfig> {
+public class PlayerSystemConfig : SingletonScriptableObject<PlayerSystemConfig> {
  
     [Title("Debug")]
     public float Debug;

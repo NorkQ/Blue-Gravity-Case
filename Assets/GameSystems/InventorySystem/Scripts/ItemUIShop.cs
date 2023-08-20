@@ -5,6 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
  
+// Item cells in the shop. Player can sell items by clicking this graphic.
 public class ItemUIShop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
     [Title("Refs")]
@@ -31,6 +32,7 @@ public class ItemUIShop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         m_Button = gameObject.GetComponent<Button>();
     }
 
+    // Init item icon, events etc.
     public void Initialize(ItemDataBase i_Item)
     {
         m_MyItemData = i_Item;
@@ -39,6 +41,7 @@ public class ItemUIShop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         m_SellinPrice = (int)(m_MyItemData.ItemPrice / Random.Range(1.5f, 2.5f));
     }
 
+    // Sell items
     public void onClick()
     {
         MoneyManager.Instance.EarnMoney(m_SellinPrice);
@@ -47,6 +50,7 @@ public class ItemUIShop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         OnItemSell?.Invoke(this);
     }
 
+    // About little price info panel
     public void OnPointerEnter(PointerEventData eventData)
     {
         UIManager.Instance.OpenSellingPriceInfoPanel("$" + m_SellinPrice.ToString());

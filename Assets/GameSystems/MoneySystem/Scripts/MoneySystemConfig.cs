@@ -6,7 +6,7 @@ using UnityEditor;
 
 [CreateAssetMenu(menuName = "Pipoza/Config/MoneySystemConfig", fileName = "MoneySystemConfig")]
 [Config]
-public class MoneySystemConfig : GlobalConfig<MoneySystemConfig> {
+public class MoneySystemConfig : SingletonScriptableObject<MoneySystemConfig> {
  
     [Title("Debug")]
     public float Debug;

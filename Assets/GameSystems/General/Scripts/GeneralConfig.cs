@@ -6,7 +6,7 @@ using UnityEditor;
 
 [CreateAssetMenu(menuName = "Pipoza/Config/GeneralConfig", fileName = "GeneralConfig")]
 [Config]
-public class GeneralConfig : GlobalConfig<GeneralConfig> {
+public class GeneralConfig : SingletonScriptableObject<GeneralConfig> {
  
     [Title("Debug")]
     public float Debug;
@@ -34,11 +34,13 @@ public class GeneralConfig : GlobalConfig<GeneralConfig> {
     [Button]
     private void openScript()
     {
+#if UNITY_EDITOR
         string path = AssetDatabase.GetAssetPath(this);
         UnityEngine.Debug.Log(path);
 
         path = path.Replace("asset", "cs");
         Object script = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
         AssetDatabase.OpenAsset(script.GetInstanceID());
+#endif
     }
 }

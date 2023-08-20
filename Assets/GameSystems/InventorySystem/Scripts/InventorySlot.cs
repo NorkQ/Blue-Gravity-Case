@@ -7,11 +7,17 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IPointerClickHandler {
  
     [Title("Refs")]
-
+    
+    // To know if slot is empty or has an item
     private eSlotStatus m_SlotStatus;
+
+    // Item cell with an icon. We'll see this in inventory grid.
     private ItemUI m_MyItem;
+
+    // Item data scriptable object, basically
     private ItemDataBase m_MyItemData;
 
+    // This event will work when we click on the item in inventory panel. For example, we'll click on apple and eat it.
     public delegate void ItemUseAction(InventorySlot i_InventorySlot, ItemDataBase m_ItemData);
     public static event ItemUseAction OnItemUse;
 
@@ -45,6 +51,7 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler {
         m_SlotStatus = eSlotStatus.Empty;
     }
 
+    // When click on the slot, we'll use-equip-eat the item.
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         if (m_SlotStatus == eSlotStatus.Empty) return;

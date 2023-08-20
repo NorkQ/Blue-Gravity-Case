@@ -22,15 +22,20 @@ public class UIManager : Singleton<UIManager> {
     public static event UICloseAction OnUIClose;
 
     // Additional Events for This Project
+
+    // When open inventory panel
     public delegate void OpenInventoryAction();
     public static event OpenInventoryAction OnOpenInventory;
 
+    // When open a warning panel
     public delegate void OpenWarningPanelAction(string i_Warning);
     public static event OpenWarningPanelAction OnOpenWarning;
 
+    // When open info box in shopping panel
     public delegate void OpenShopInfoboxPanelAction(string i_Info);
     public static event OpenShopInfoboxPanelAction OnOpenShopInfobox;
 
+    // When open small price info panel in shopping panel
     public delegate void OpenSellingPricePanelAction(string i_Info);
     public static event OpenSellingPricePanelAction OnOpenSellingPricePanel;
 
@@ -52,6 +57,7 @@ public class UIManager : Singleton<UIManager> {
     {
     }
 
+    // Open all panels at the start (to initialize events). They'r closing later.
     private void Start()
     {
         UIBase[] panels = FindObjectsOfType<UIBase>(true);

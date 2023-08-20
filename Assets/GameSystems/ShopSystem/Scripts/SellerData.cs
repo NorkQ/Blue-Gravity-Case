@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using DG.Tweening;
 
+// Differen sellers have different items, avatar and quote
 [CreateAssetMenu(menuName = "Pipoza/Scriptable Object/Seller Data", fileName = "New Seller Data")]
 public class SellerData : ScriptableObject {
 

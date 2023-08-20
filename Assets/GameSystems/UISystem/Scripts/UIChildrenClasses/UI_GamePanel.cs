@@ -6,7 +6,6 @@ using DG.Tweening;
 public class UI_GamePanel : UIBase {
  
     [Title("Refs")]
-    [SerializeField, ReadOnly] private Transform m_ExampleRef;
  
     #region Getters and setters
     #endregion
@@ -15,6 +14,5 @@ public class UI_GamePanel : UIBase {
     protected override void setRefs() 
     {
         base.setRefs();
-        m_ExampleRef = new GameObject().transform;
     }
 }

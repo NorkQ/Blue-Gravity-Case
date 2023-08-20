@@ -31,6 +31,7 @@ public class ShopInventory : MonoBehaviour {
         ShopUIListElement.OnItemBuy -= (ShopUIListElement i_ItemUIShop) => refresh();
     }
  
+    // Delete item visuals and create them again by inventory (refreshing grid)
     private void initialize()
     {
         ItemUIShop[] oldItems = gameObject.GetComponentsInChildren<ItemUIShop>();

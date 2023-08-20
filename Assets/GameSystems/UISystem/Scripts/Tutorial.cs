@@ -20,6 +20,7 @@ public class Tutorial : MonoBehaviour {
 
     private void OnEnable()
     {
+        // Hide tutorial when player opens inventory
         UIManager.OnOpenInventory += () => m_TutorialText.gameObject.SetActive(false);
     }
 
@@ -28,6 +29,7 @@ public class Tutorial : MonoBehaviour {
         UIManager.OnOpenInventory -= () => m_TutorialText.gameObject.SetActive(false);
     }
 
+    // If tutorial not showed, show it to player.
     private void Awake()
     {
         if(PlayerPrefs.GetInt("IsTutorialShowed") == 0)

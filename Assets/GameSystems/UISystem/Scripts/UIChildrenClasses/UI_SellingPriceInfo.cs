@@ -37,11 +37,13 @@ public class UI_SellingPriceInfo : UIBase {
         UIManager.OnOpenSellingPricePanel -= update;
     }
 
+    // Follow mouse
     private void Update()
     {
         m_Transform.position = UIManager.Instance.MousePosToUIPos();
     }
 
+    // Update price text
     private void update(string i_Warning)
     {
         m_InfoText.text = i_Warning;
