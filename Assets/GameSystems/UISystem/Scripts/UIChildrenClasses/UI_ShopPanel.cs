@@ -33,7 +33,7 @@ public class UI_ShopPanel : UIBase {
     {
         base.OnEnable();
         ShopManager.OnOpenShop += initializeShop;
-        m_CloseButton.onClick.AddListener(close);
+        m_CloseButton.onClick.AddListener(() => UIManager.Instance.OpenUI(typeof(UI_GamePanel)));
     }
 
     protected override void OnDisable()

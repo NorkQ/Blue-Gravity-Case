@@ -15,6 +15,8 @@ public abstract class UIBase : MonoBehaviour {
     [SerializeField] private eUIType m_UIType;
     [SerializeField] private bool m_CloseOnStart;
     [SerializeField] private float m_WaitForCloseDuration;
+    [SerializeField] private AudioClip m_OpenSFX;
+    [SerializeField] private AudioClip m_CloseSFX;
 
     private bool m_IsSubscribed;
     private bool m_IsClosedOnStart;
@@ -96,6 +98,7 @@ public abstract class UIBase : MonoBehaviour {
 
         OnUIOpened?.Invoke(m_UIName);
         callOpenEventByType();
+        AudioManager.Instance.PlaySFX(m_OpenSFX);
     }
 
     [Button]
@@ -106,6 +109,7 @@ public abstract class UIBase : MonoBehaviour {
 
         OnUIClosed?.Invoke(m_UIName);
         callCloseEventByType();
+        AudioManager.Instance.PlaySFX(m_CloseSFX);
     }
  
     private void callOpenEventByType()

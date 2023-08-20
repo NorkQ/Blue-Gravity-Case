@@ -20,7 +20,7 @@ public class GeneralConfig : GlobalConfig<GeneralConfig> {
     public AudioClip InShopAmbientMusic;
 
     [Title("UI")]
-    public float UI;
+    public string NotEnoughMoneyWarning;
 
     [Title("Player")]
     public float Player;

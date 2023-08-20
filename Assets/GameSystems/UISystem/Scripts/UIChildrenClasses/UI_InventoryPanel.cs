@@ -31,7 +31,7 @@ public class UI_InventoryPanel : UIBase {
     protected override void OnEnable()
     {
         base.OnEnable();
-        m_CloseButton.onClick.AddListener(close);
+        m_CloseButton.onClick.AddListener(() => UIManager.Instance.OpenUI(typeof(UI_GamePanel)));
         updateAll();
 
         Inventory.OnEquipItem += (ItemDataEquippable i_ItemData) => updateAll();

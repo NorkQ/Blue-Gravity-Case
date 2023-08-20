@@ -5,13 +5,17 @@ using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
  
-public class ItemUIShop : MonoBehaviour {
+public class ItemUIShop : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
     [Title("Refs")]
     [SerializeField, ReadOnly] private Image m_Icon;
     [SerializeField, ReadOnly] private Button m_Button;
 
+    [Title("Manual Refs")]
+    [SerializeField] private AudioClip m_SellSFX;
+
     private ItemDataBase m_MyItemData;
+    private int m_SellinPrice;
 
     public delegate void ItemSellAction(ItemUIShop i_ItemUIShop);
     public static event ItemSellAction OnItemSell;
@@ -32,11 +36,29 @@ public class ItemUIShop : MonoBehaviour {
         m_MyItemData = i_Item;
         m_Icon.sprite = m_MyItemData.ItemIcon;
         m_Button.onClick.AddListener(onClick);
+        m_SellinPrice = (int)(m_MyItemData.ItemPrice / Random.Range(1.5f, 2.5f));
     }
 
     public void onClick()
     {
+        MoneyManager.Instance.EarnMoney(m_SellinPrice);
         Inventory.Instance.RemoveItem(m_MyItemData);
+        AudioManager.Instance.PlaySFX(m_SellSFX);
         OnItemSell?.Invoke(this);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        UIManager.Instance.OpenSellingPriceInfoPanel("$" + m_SellinPrice.ToString());
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIManager.Instance.CloseUI(typeof(UI_SellingPriceInfo));
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        UIManager.Instance.CloseUI(typeof(UI_SellingPriceInfo));
     }
 }

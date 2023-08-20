@@ -25,6 +25,15 @@ public class UIManager : Singleton<UIManager> {
     public delegate void OpenInventoryAction();
     public static event OpenInventoryAction OnOpenInventory;
 
+    public delegate void OpenWarningPanelAction(string i_Warning);
+    public static event OpenWarningPanelAction OnOpenWarning;
+
+    public delegate void OpenShopInfoboxPanelAction(string i_Info);
+    public static event OpenShopInfoboxPanelAction OnOpenShopInfobox;
+
+    public delegate void OpenSellingPricePanelAction(string i_Info);
+    public static event OpenSellingPricePanelAction OnOpenSellingPricePanel;
+
     #region Getters and setters
     #endregion
 
@@ -73,7 +82,7 @@ public class UIManager : Singleton<UIManager> {
 
     public void OpenUIWorldPosition(Type i_Panel, Vector3 i_Position, Vector2 i_ScreenOffset)
     {
-        Vector2 finalPosition = worldToUIPosition(i_Position) + i_ScreenOffset;
+        Vector2 finalPosition = WorldToUIPosition(i_Position) + i_ScreenOffset;
         OnUIOpenAtPosition?.Invoke(i_Panel.Name, finalPosition);
     }
 
@@ -82,7 +91,7 @@ public class UIManager : Singleton<UIManager> {
         OnUIOpenAtPosition?.Invoke(i_Panel.Name, i_Position);
     }
 
-    private Vector2 worldToUIPosition(Vector3 i_TargetPos)
+    public Vector2 WorldToUIPosition(Vector3 i_TargetPos)
     {
         Vector3 screenPos = Camera.main.WorldToScreenPoint(i_TargetPos);
         float h = Screen.height;
@@ -91,6 +100,18 @@ public class UIManager : Singleton<UIManager> {
         float y = screenPos.y - (h / 2);
         float s = m_Canvas.scaleFactor;
         return new Vector2(x, y) / s;
+    }
+
+    public Vector2 MousePosToUIPos()
+    {
+        Vector2 movePos;
+
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            m_Canvas.transform as RectTransform,
+            Input.mousePosition, m_Canvas.worldCamera,
+            out movePos);
+
+        return m_Canvas.transform.TransformPoint(movePos);
     }
 
     #region Additional methods for this project
@@ -105,6 +126,24 @@ public class UIManager : Singleton<UIManager> {
         }
 
         return null;
+    }
+
+    public void OpenWarningPanel(string i_Warning)
+    {
+        OpenUI(typeof(UI_WarningPanel));
+        OnOpenWarning?.Invoke(i_Warning);
+    }
+
+    public void OpenShopInfoboxPanel(string i_Info)
+    {
+        OpenUI(typeof(UI_ShopListInfobox));
+        OnOpenShopInfobox?.Invoke(i_Info);
+    }
+
+    public void OpenSellingPriceInfoPanel(string i_Info)
+    {
+        OpenUI(typeof(UI_SellingPriceInfo));
+        OnOpenSellingPricePanel?.Invoke(i_Info);
     }
     #endregion
 }

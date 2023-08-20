@@ -6,13 +6,16 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ShopUIListElement : MonoBehaviour {
+public class ShopUIListElement : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
 
     [Title("Refs")]
     [SerializeField, ReadOnly] private Button m_Button;
     [SerializeField, ReadOnly] private Image m_ItemIconImage;
     [SerializeField, ReadOnly] private TMP_Text m_ItemNameText;
     [SerializeField, ReadOnly] private TMP_Text m_ItemPriceText;
+
+    [Title("Manual Refs")]
+    [SerializeField] private AudioClip m_BuySFX;
 
     private ItemDataBase m_MyItemData;
 
@@ -42,8 +45,25 @@ public class ShopUIListElement : MonoBehaviour {
 
     public void onClick()
     {
-        // Para harcanacak
+        if (!MoneyManager.Instance.CheckIsMoneyEnough(m_MyItemData.ItemPrice))
+        {
+            UIManager.Instance.OpenWarningPanel(GeneralConfig.Instance.NotEnoughMoneyWarning);
+            return;
+        }
+
+        AudioManager.Instance.PlaySFX(m_BuySFX);
         Inventory.Instance.AddItem(m_MyItemData);
+        MoneyManager.Instance.ConsumeMoney(m_MyItemData.ItemPrice);
         OnItemBuy?.Invoke(this);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        UIManager.Instance.OpenShopInfoboxPanel(m_MyItemData.ItemDescription);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UIManager.Instance.CloseUI(typeof(UI_ShopListInfobox));
     }
 }

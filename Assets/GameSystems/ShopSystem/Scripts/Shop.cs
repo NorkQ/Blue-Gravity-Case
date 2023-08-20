@@ -23,6 +23,6 @@ public class Shop : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        UIManager.Instance.CloseUI(typeof(UI_ShopPanel));
+        UIManager.Instance.OpenUI(typeof(UI_GamePanel));
     }
 }

@@ -17,3 +17,4 @@ MonoBehaviour:
   ItemPrice: 5
   ItemDescription: It's a fruit you can find in abundance around here. If only I
     hadn't collected them all. It will give you some relief.
+  UseSoundEffect: {fileID: 8300000, guid: 788893f411ede7d4fb509826fd2242b8, type: 3}

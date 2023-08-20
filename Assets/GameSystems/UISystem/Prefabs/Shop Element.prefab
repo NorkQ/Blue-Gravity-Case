@@ -643,3 +643,4 @@ MonoBehaviour:
   m_ItemIconImage: {fileID: 598064458}
   m_ItemNameText: {fileID: 1352160751}
   m_ItemPriceText: {fileID: 2077920531}
+  m_BuySFX: {fileID: 8300000, guid: 1a5649053daa79f4a8fa18a630ead8d4, type: 3}

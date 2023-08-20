@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using DG.Tweening;
+using System.Linq;
  
 public class AudioManager : Singleton<AudioManager> {
 
@@ -15,8 +16,13 @@ public class AudioManager : Singleton<AudioManager> {
     [Button]
     private void setRefs() 
     {
-        m_AudioSources = gameObject.GetComponentsInChildren<AudioSource>();
+        m_AudioSources = gameObject.GetComponentsInChildren<AudioSource>().Where(x => x.gameObject != gameObject).ToArray();
         m_AmbientAudioSource = gameObject.GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        PlayAmbientMusic(GeneralConfig.Instance.InGameAmbientMusic);
     }
 
     private void OnEnable()
@@ -41,6 +47,7 @@ public class AudioManager : Singleton<AudioManager> {
 
     public void PlaySFX(AudioClip i_Clip)
     {
+        if (i_Clip == null) return;
         AudioSource sourceToPlay = getAudioSourceInIdle();
 
         if(sourceToPlay == null)
@@ -56,8 +63,14 @@ public class AudioManager : Singleton<AudioManager> {
 
     public void PlayAmbientMusic(AudioClip i_Clip)
     {
-        m_AmbientAudioSource.clip = i_Clip;
-        m_AmbientAudioSource.Play();
+        m_AmbientAudioSource.DOFade(0, 0.7f).OnComplete(
+            () => {
+                m_AmbientAudioSource.Stop();
+                m_AmbientAudioSource.volume = 1f;
+                m_AmbientAudioSource.clip = i_Clip;
+                m_AmbientAudioSource.Play();
+            });
+        
     }
 
     private void playAmbientByPanel(string i_PanelName)

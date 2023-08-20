@@ -16,6 +16,6 @@ MonoBehaviour:
   ItemName: Gray Pants
   ItemPrice: 140
   ItemDescription: You can't travel without legs. Protect them well.
-  UseSoundEffect: {fileID: 0}
+  UseSoundEffect: {fileID: 8300000, guid: f8770c5988a56904785011d902f3dd3f, type: 3}
   EquipmentSprite: {fileID: 21300000, guid: 0c6412d95175c2b40bd9a27f7d1fa096, type: 3}
   EquippableType: 2

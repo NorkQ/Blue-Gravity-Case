@@ -16,3 +16,4 @@ MonoBehaviour:
   ItemName: Meat
   ItemPrice: 25
   ItemDescription: Be strong my friend, be strong!
+  UseSoundEffect: {fileID: 8300000, guid: 788893f411ede7d4fb509826fd2242b8, type: 3}
