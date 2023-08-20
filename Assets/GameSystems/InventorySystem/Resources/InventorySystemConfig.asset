@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Debug: 0
   Input: 0
-  Gameplay: 0
+  InventorySize: 16
+  ItemUIPrefab: {fileID: -6989992728589681267, guid: d76ae9f0aa297f44fb2c98e494d65197,
+    type: 3}
   UI: 0
   Player: 0
   Camera: 0
