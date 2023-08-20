@@ -21,7 +21,8 @@ public class ShopInventory : MonoBehaviour {
     private void OnEnable() 
     {
         ItemUIShop.OnItemSell += (ItemUIShop i_ItemUIShop) => refresh();
-        ShopUIListElement.OnItemBuy += (ShopUIListElement i_ItemUIShop) => refresh(); 
+        ShopUIListElement.OnItemBuy += (ShopUIListElement i_ItemUIShop) => refresh();
+        initialize();
     }
  
     private void OnDisable() 

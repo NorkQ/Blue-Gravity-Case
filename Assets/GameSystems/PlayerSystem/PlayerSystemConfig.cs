@@ -25,6 +25,9 @@ public class PlayerSystemConfig : GlobalConfig<PlayerSystemConfig> {
 
     [Title("Player")]
     public float MovementSpeed;
+    public Sprite DefaultHead;
+    public Sprite DefaultBody;
+    public Sprite DefaultLegs;
 
     [Title("Camera")]
     public float Camera;

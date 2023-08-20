@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour {
         m_DirectionVector.y = Input.GetAxisRaw("Vertical");
         m_Speed = m_DirectionVector.sqrMagnitude;
 
+        // I added this for new character. See more in github readme about old and new character differences.
+        if(m_DirectionVector.x != 0) m_PlayerRigidbody.transform.SetLocalScaleX(m_DirectionVector.x);
+
         checkDirection();
         updateAnimatorValues();
     }
@@ -54,6 +57,9 @@ public class PlayerMovement : MonoBehaviour {
         m_PlayerRigidbody.velocity = m_DirectionVector.normalized * m_PlayerSystemConfig.MovementSpeed;
     }
 
+    /* These direction calculations were for 4 directional pixel character. I changed the character for some reasons.
+     * But you can inspect my codes here anyways. See more description about this decision and old gameplay in github readme.
+     */
     private void checkDirection()
     {
         // I am calculating this direction enum because we can use it (can be necessary) later in a different mechanic.
