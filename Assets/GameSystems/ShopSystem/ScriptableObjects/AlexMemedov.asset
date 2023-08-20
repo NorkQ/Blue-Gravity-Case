@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SellerIcon: {fileID: 1167055706, guid: abda0776680c41c44b66ed94f33b8a42, type: 3}
   SellerName: Alex Memedov
-  SellerQuote: Hi traveler, how can I help you? I'm sure you'll find something!
+  SellerQuote: Hi traveler, how can I help you? I'm sure you'll find something here!
   SellerItems:
   - {fileID: 11400000, guid: 1fbe2285e0e4f1047981d830ba3b2be1, type: 2}
   - {fileID: 11400000, guid: 66e847def482e4846bd8794d9a1622c3, type: 2}
   - {fileID: 11400000, guid: 746bc6a3956ef424e8bcf547e81c3d39, type: 2}
-  - {fileID: 11400000, guid: c460ad0632d7e3143a3f9483f9f218e0, type: 2}
-  - {fileID: 11400000, guid: 0b14f63bf46279149a828047dbaa3c6c, type: 2}
-  - {fileID: 11400000, guid: 33ec3930704e55d47a697f0224cfe08b, type: 2}
+  - {fileID: 11400000, guid: e4b7160162f03124ca7f64e74a7e9e1d, type: 2}
+  - {fileID: 11400000, guid: 8fa1103289d57de4c8f571c05e2551ea, type: 2}
+  - {fileID: 11400000, guid: 6638930cd6efce54e9fef7ecc70ad793, type: 2}

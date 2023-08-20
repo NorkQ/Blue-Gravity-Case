@@ -32,27 +32,39 @@ public class UI_InventoryPanel : UIBase {
     {
         base.OnEnable();
         m_CloseButton.onClick.AddListener(close);
-        updateInventoryPanel();
+        updateAll();
+
+        Inventory.OnEquipItem += (ItemDataEquippable i_ItemData) => updateAll();
+        Inventory.OnUnequipItem += (ItemDataEquippable i_ItemData) => updateAll();
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
         m_CloseButton.onClick.RemoveAllListeners();
+
+        Inventory.OnEquipItem -= (ItemDataEquippable i_ItemData) => updateAll();
+        Inventory.OnUnequipItem -= (ItemDataEquippable i_ItemData) => updateAll();
+    }
+
+    private void updateAll()
+    {
+        updateInventoryPanel();
+        updateEquipmentPanel();
     }
 
     private void updateInventoryPanel()
     {
         // All items that we have in inventory panel
-        ItemDataBase[] allItemsInUI = m_AllInventorySlots.Where(x => x.SlotStatus == eSlotStatus.Filled).Select(x => x.MyItemData).ToArray();
+        ItemDataBase[] allItemsInUI = m_InventorySlots.Where(x => x.SlotStatus == eSlotStatus.Filled).Select(x => x.MyItemData).ToArray();
 
         List<ItemDataBase> allItemsInUIList = new List<ItemDataBase>(allItemsInUI);
-        List<ItemDataBase> allItemsInInventory = new List<ItemDataBase>(Inventory.Instance.AllItems);
+        List<ItemDataBase> allItemsInInventory = new List<ItemDataBase>(Inventory.Instance.Items);
 
         #region In Inventory But Not In UI
         // All items that we have in inventory but not in UI. Inventory panel must be updated to see our new items in the UI.
         List<ItemDataBase> inInventoryButNotInUI = new List<ItemDataBase>();
-        foreach (ItemDataBase itemData in Inventory.Instance.AllItems)
+        foreach (ItemDataBase itemData in Inventory.Instance.Items)
         {
             if (allItemsInUIList.Contains(itemData))
             {
@@ -81,6 +93,7 @@ public class UI_InventoryPanel : UIBase {
         }
         #endregion
 
+        #region Instantiate or Destroy Inventory Items
         foreach (ItemDataBase itemData in notInInventoryButInUI)
         {
             foreach(InventorySlot slot in m_AllInventorySlots)
@@ -99,6 +112,22 @@ public class UI_InventoryPanel : UIBase {
             itemUI.Initialize(itemData);
             getEmptyInventorySlot().SetMyItem(itemUI);
         }
+        #endregion
+    }
+
+    private void updateEquipmentPanel()
+    {
+        foreach(EquipmentSlot equipmentSlot in m_EquipmentSlots)
+        {
+            equipmentSlot.RemoveMyItem();
+        }
+
+        foreach(ItemDataEquippable itemData in Inventory.Instance.Equipments)
+        {
+            ItemUI itemUI = Instantiate(m_InventorySystemConfig.ItemUIPrefab);
+            itemUI.Initialize(itemData);
+            getEquipmentSlotByType(itemData.EquippableType).SetMyItem(itemUI);
+        }
     }
 
     private InventorySlot getEmptyInventorySlot()
@@ -109,6 +138,16 @@ public class UI_InventoryPanel : UIBase {
         }
 
         Debug.Log("return null");
+        return null;
+    }
+
+    private EquipmentSlot getEquipmentSlotByType(eEquippableType i_EquippableType)
+    {
+        foreach(EquipmentSlot equipmentSlot in m_EquipmentSlots)
+        {
+            if (equipmentSlot.EquipmentType == i_EquippableType) return equipmentSlot;
+        }
+
         return null;
     }
 }

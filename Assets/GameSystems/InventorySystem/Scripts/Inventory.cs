@@ -8,9 +8,15 @@ public class Inventory : Singleton<Inventory> {
 
     [Title("Refs")]
 
-    public List<ItemDataBase> m_Items = new List<ItemDataBase>();
-    public List<ItemDataBase> m_Equipments = new List<ItemDataBase>();
-    public List<ItemDataBase> m_AllItems = new List<ItemDataBase>();
+    private List<ItemDataBase> m_Items = new List<ItemDataBase>();
+    private List<ItemDataBase> m_Equipments = new List<ItemDataBase>();
+    private List<ItemDataBase> m_AllItems = new List<ItemDataBase>();
+
+    public delegate void ItemEquipAction(ItemDataEquippable i_ItemDataEquippable);
+    public static event ItemEquipAction OnEquipItem;
+
+    public delegate void ItemUnequipAction(ItemDataEquippable i_ItemDataEquippable);
+    public static event ItemUnequipAction OnUnequipItem;
 
     #region Getters and setters
     private InventorySystemConfig m_InventorySystemConfig => InventorySystemConfig.Instance;
@@ -24,7 +30,6 @@ public class Inventory : Singleton<Inventory> {
     {
     }
     
-    [Button]
     public void AddItem(ItemDataBase i_Item)
     {
         if (m_Items.Count >= m_InventorySystemConfig.InventorySize) return;
@@ -43,16 +48,29 @@ public class Inventory : Singleton<Inventory> {
     public void EquipItem(ItemDataBase i_Item)
     {
         if (!(i_Item is ItemDataEquippable)) return;
+        m_Items.Remove(i_Item);
+        m_Equipments.Add(i_Item);
+
+        OnEquipItem?.Invoke(i_Item as ItemDataEquippable);
+
     }
 
     public void UnequipItem(ItemDataBase i_Item)
     {
+        m_Equipments.Remove(i_Item);
+        m_Items.Add(i_Item);
 
+        OnUnequipItem?.Invoke(i_Item as ItemDataEquippable);
     }
 
     public bool CheckThisItemInInventory(ItemDataBase i_Item)
     {
         return m_Items.Contains(i_Item) || m_Equipments.Contains(i_Item);
+    }
+
+    public bool CheckIsEquipped(ItemDataBase i_Item)
+    {
+        return m_Equipments.Contains(i_Item);
     }
 
     private List<ItemDataBase> getAllItems()

@@ -6,14 +6,13 @@ using DG.Tweening;
 [CreateAssetMenu(menuName = "Pipoza/Scriptable Object/Item Data", fileName = "New Item Data")]
 public class ItemDataBase : ScriptableObject
 {
-
     [Title("Basic Data")]
     [PreviewField] public Sprite ItemIcon;
+
     public string ItemName;
     public int ItemPrice;
 
     [TextArea] public string ItemDescription;
 
-    [HorizontalGroup("Booleans")]
-    public bool IsCollectible;
+    public AudioClip UseSoundEffect;
 }
