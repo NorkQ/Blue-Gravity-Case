@@ -69,6 +69,7 @@ public class UIManager : Singleton<UIManager> {
 
     private void Update()
     {
+        // Open inventory when press tab
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             OpenUI(typeof(UI_InventoryPanel));
