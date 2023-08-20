@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7286cd59ecf35764ab90a701961b1617, type: 3}
-  m_Name: Leather Pants
+  m_Name: Helmet Green
   m_EditorClassIdentifier: 
-  ItemIcon: {fileID: 2012539305, guid: 3b1149d48dc38984d9d57fbab465ed35, type: 3}
-  ItemName: Leather Pants
-  ItemPrice: 100
-  ItemDescription: You can't travel without legs. Protect them well.
+  ItemIcon: {fileID: 683921385, guid: 5375e935e34b8e8489b4c44f399296db, type: 3}
+  ItemName: Green Helmet
+  ItemPrice: 60
+  ItemDescription: Protect your body, protect your head more.
   UseSoundEffect: {fileID: 0}
-  EquipmentSprite: {fileID: 21300000, guid: 27fe921d9d4bdb24eb91cc1e96a04f02, type: 3}
-  EquippableType: 2
+  EquipmentSprite: {fileID: 21300000, guid: f7e7bed775fff8347b9e53c67e20875f, type: 3}
+  EquippableType: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7286cd59ecf35764ab90a701961b1617, type: 3}
-  m_Name: Leather Armor
+  m_Name: Armor Green
   m_EditorClassIdentifier: 
   ItemIcon: {fileID: -1892957225, guid: bcc7e40c97e301748b4f16878ba24bba, type: 3}
-  ItemName: Leather Armor
+  ItemName: Green Armor
   ItemPrice: 110
   ItemDescription: A healthy mind in a healthy body.
   UseSoundEffect: {fileID: 0}

@@ -6,9 +6,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class ShopUIListElement : MonoBehaviour, IPointerClickHandler {
- 
+public class ShopUIListElement : MonoBehaviour {
+
     [Title("Refs")]
+    [SerializeField, ReadOnly] private Button m_Button;
     [SerializeField, ReadOnly] private Image m_ItemIconImage;
     [SerializeField, ReadOnly] private TMP_Text m_ItemNameText;
     [SerializeField, ReadOnly] private TMP_Text m_ItemPriceText;
@@ -27,6 +28,7 @@ public class ShopUIListElement : MonoBehaviour, IPointerClickHandler {
         m_ItemIconImage = transform.FindDeepChild<Image>("Icon");
         m_ItemNameText = transform.FindDeepChild<TMP_Text>("Item Name");
         m_ItemPriceText = transform.FindDeepChild<TMP_Text>("Price Text");
+        m_Button = gameObject.GetComponent<Button>();
     }
  
     public void Initialize(ItemDataBase i_ItemData)
@@ -35,9 +37,10 @@ public class ShopUIListElement : MonoBehaviour, IPointerClickHandler {
         m_ItemIconImage.sprite = i_ItemData.ItemIcon;
         m_ItemNameText.text = i_ItemData.ItemName;
         m_ItemPriceText.text = "$" + i_ItemData.ItemPrice.ToString();
+        m_Button.onClick.AddListener(onClick);
     }
 
-    public void OnPointerClick(PointerEventData pointerEventData)
+    public void onClick()
     {
         // Para harcanacak
         Inventory.Instance.AddItem(m_MyItemData);
