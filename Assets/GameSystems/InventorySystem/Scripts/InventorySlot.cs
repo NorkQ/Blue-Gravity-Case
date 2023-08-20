@@ -12,12 +12,13 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler {
     private ItemUI m_MyItem;
     private ItemDataBase m_MyItemData;
 
-    public delegate void ItemUseAction(ItemDataBase m_ItemData);
+    public delegate void ItemUseAction(InventorySlot i_InventorySlot, ItemDataBase m_ItemData);
     public static event ItemUseAction OnItemUse;
 
     #region Getters and setters
     public eSlotStatus SlotStatus => m_SlotStatus;
     public ItemDataBase MyItemData => m_MyItemData;
+    public ItemUI MyItem => m_MyItem;
     #endregion
  
     [Button]
@@ -51,6 +52,6 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler {
         ItemDataBase myItemData = m_MyItemData;
 
         RemoveMyItem();
-        OnItemUse?.Invoke(myItemData);
+        OnItemUse?.Invoke(this, myItemData);
     }
 }

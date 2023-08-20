@@ -10,6 +10,7 @@ public class UIManager : Singleton<UIManager> {
  
     [Title("Refs")]
     [SerializeField, ReadOnly] private Canvas m_Canvas;
+    [SerializeField, ReadOnly] private EquipmentSlot[] m_EquipmentSlots;
 
     public delegate void UIOpenAction(string i_Name);
     public static event UIOpenAction OnUIOpen;
@@ -27,6 +28,7 @@ public class UIManager : Singleton<UIManager> {
     private void setRefs() 
     {
         m_Canvas = FindObjectOfType<Canvas>();
+        m_EquipmentSlots = FindObjectsOfType<EquipmentSlot>();
     }
 
     private void OnEnable()
@@ -77,4 +79,19 @@ public class UIManager : Singleton<UIManager> {
         float s = m_Canvas.scaleFactor;
         return new Vector2(x, y) / s;
     }
+
+    #region Additional methods for this project
+    public EquipmentSlot FindEquipmentSlotByType(eEquippableType i_EquipmentType)
+    {
+        foreach (EquipmentSlot slot in m_EquipmentSlots)
+        {
+            if (slot.EquipmentType == i_EquipmentType)
+            {
+                return slot;
+            }
+        }
+
+        return null;
+    }
+    #endregion
 }

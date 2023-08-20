@@ -48,6 +48,14 @@ public class Inventory : Singleton<Inventory> {
     public void EquipItem(ItemDataBase i_Item)
     {
         if (!(i_Item is ItemDataEquippable)) return;
+        // If slot is filled, we'll unequip current item
+
+        EquipmentSlot equipmentSlot = UIManager.Instance.FindEquipmentSlotByType((i_Item as ItemDataEquippable).EquippableType);
+        if (equipmentSlot.SlotStatus == eSlotStatus.Filled)
+        {
+            UnequipItem(equipmentSlot.MyItemData);
+        }
+
         m_Items.Remove(i_Item);
         m_Equipments.Add(i_Item);
 
