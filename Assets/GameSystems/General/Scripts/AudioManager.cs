@@ -23,7 +23,7 @@ public class AudioManager : Singleton<AudioManager> {
 
     private void Start()
     {
-        PlayAmbientMusic(GeneralConfig.Instance.InGameAmbientMusic);
+        DOVirtual.DelayedCall(0.5f, () => PlayAmbientMusic(GeneralConfig.Instance.InGameAmbientMusic));
     }
 
     private void OnEnable()

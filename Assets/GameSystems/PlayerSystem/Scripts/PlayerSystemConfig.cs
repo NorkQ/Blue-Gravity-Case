@@ -38,11 +38,13 @@ public class PlayerSystemConfig : SingletonScriptableObject<PlayerSystemConfig> 
     [Button]
     private void openScript()
     {
+#if UNITY_EDITOR
         string path = AssetDatabase.GetAssetPath(this);
         UnityEngine.Debug.Log(path);
 
         path = path.Replace("asset", "cs");
         Object script = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
         AssetDatabase.OpenAsset(script.GetInstanceID());
+#endif
     }
 }

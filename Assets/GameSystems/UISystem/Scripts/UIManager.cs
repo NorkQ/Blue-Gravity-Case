@@ -11,6 +11,7 @@ public class UIManager : Singleton<UIManager> {
     [Title("Refs")]
     [SerializeField, ReadOnly] private Canvas m_Canvas;
     [SerializeField, ReadOnly] private EquipmentSlot[] m_EquipmentSlots;
+    [SerializeField, ReadOnly] private UIBase[] m_AllUI;
 
     public delegate void UIOpenAction(string i_Name);
     public static event UIOpenAction OnUIOpen;
@@ -47,6 +48,7 @@ public class UIManager : Singleton<UIManager> {
     {
         m_Canvas = FindObjectOfType<Canvas>();
         m_EquipmentSlots = FindObjectsOfType<EquipmentSlot>();
+        m_AllUI = FindObjectsOfType<UIBase>(true);
     }
 
     private void OnEnable()
@@ -72,8 +74,15 @@ public class UIManager : Singleton<UIManager> {
         // Open inventory when press tab
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            OpenUI(typeof(UI_InventoryPanel));
-            OnOpenInventory?.Invoke();
+            if (CheckIsUIEnabled(typeof(UI_InventoryPanel)))
+            {
+                CloseUI(typeof(UI_InventoryPanel));
+            }
+            else
+            {
+                OpenUI(typeof(UI_InventoryPanel));
+                OnOpenInventory?.Invoke();
+            }
         }
     }
 
@@ -107,6 +116,24 @@ public class UIManager : Singleton<UIManager> {
         float y = screenPos.y - (h / 2);
         float s = m_Canvas.scaleFactor;
         return new Vector2(x, y) / s;
+    }
+
+    private UIBase getUIByType(Type i_Panel)
+    {
+        foreach(UIBase ui in m_AllUI)
+        {
+            if(ui.GetType() == i_Panel)
+            {
+                return ui;
+            }
+        }
+
+        return null;
+    }
+
+    public bool CheckIsUIEnabled(Type i_Panel)
+    {
+        return getUIByType(i_Panel).gameObject.activeSelf;
     }
 
     public Vector2 MousePosToUIPos()

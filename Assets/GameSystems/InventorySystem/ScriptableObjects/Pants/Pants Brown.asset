@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7286cd59ecf35764ab90a701961b1617, type: 3}
+  m_Name: Pants Brown
+  m_EditorClassIdentifier: 
+  ItemIcon: {fileID: 1700681378, guid: ea506a782f489964495725266c2a5f1a, type: 3}
+  ItemName: Brown Pants
+  ItemPrice: 200
+  ItemDescription: You can't travel without legs. Protect them well.
+  UseSoundEffect: {fileID: 8300000, guid: f8770c5988a56904785011d902f3dd3f, type: 3}
+  EquipmentSprite: {fileID: 21300000, guid: 4807dc8cba98f89409729f6aac2945a7, type: 3}
+  EquippableType: 2

@@ -6,7 +6,7 @@ using UnityEditor;
 
 [CreateAssetMenu(menuName = "Pipoza/Config/InventorySystemConfig", fileName = "InventorySystemConfig")]
 [Config]
-public class InventorySystemConfig : GlobalConfig<InventorySystemConfig> {
+public class InventorySystemConfig : SingletonScriptableObject<InventorySystemConfig> {
  
     [Title("Debug")]
     public float Debug;

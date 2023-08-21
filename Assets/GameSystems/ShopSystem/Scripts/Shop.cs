@@ -18,11 +18,11 @@ public class Shop : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ShopManager.Instance.OpenShop(m_SellerData);
+        if(collision.CompareTag(nameof(eTags.Player))) ShopManager.Instance.OpenShop(m_SellerData);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        UIManager.Instance.OpenUI(typeof(UI_GamePanel));
+        if (collision.CompareTag(nameof(eTags.Player))) UIManager.Instance.OpenUI(typeof(UI_GamePanel));
     }
 }

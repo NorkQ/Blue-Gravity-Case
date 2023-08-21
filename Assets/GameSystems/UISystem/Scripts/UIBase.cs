@@ -98,18 +98,18 @@ public abstract class UIBase : MonoBehaviour {
 
         OnUIOpened?.Invoke(m_UIName);
         callOpenEventByType();
-        AudioManager.Instance.PlaySFX(m_OpenSFX);
+        if (m_IsClosedOnStart) AudioManager.Instance.PlaySFX(m_OpenSFX);
     }
 
     [Button]
     protected virtual void close()
     {
+        if (m_IsClosedOnStart) AudioManager.Instance.PlaySFX(m_CloseSFX);
         gameObject.SetActive(false);
         m_IsClosedOnStart = true;
 
         OnUIClosed?.Invoke(m_UIName);
         callCloseEventByType();
-        AudioManager.Instance.PlaySFX(m_CloseSFX);
     }
  
     private void callOpenEventByType()
