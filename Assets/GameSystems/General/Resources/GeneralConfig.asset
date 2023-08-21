@@ -17,7 +17,7 @@ MonoBehaviour:
   InGameAmbientMusic: {fileID: 8300000, guid: 371d5a347b855b843bea098ba1e69e65, type: 3}
   InInventoryAmbientMusic: {fileID: 8300000, guid: 3c14b89d93df8a74bbb07544c8aacac9,
     type: 3}
-  InShopAmbientMusic: {fileID: 8300000, guid: 6b71a0e0e6ae6ec499f3ca6ac9ecc0e5, type: 3}
+  InShopAmbientMusic: {fileID: 8300000, guid: e607e8c76730d174dbeb06b1b478cde8, type: 3}
   NotEnoughMoneyWarning: You don't have enough money
   Player: 0
   Camera: 0
