@@ -25,6 +25,24 @@ public static class ExtensionMethods
         return null;
     }
 
+    public static T FindClosest<T>(this Transform aCenterObject, Component[] aColliders)
+    {
+        float nearestDistance = float.MaxValue;
+        float dummyDistance = float.MaxValue;
+        T nearestObject = default(T);
+        foreach(Component component in aColliders)
+        {
+            dummyDistance = (component.transform.position - aCenterObject.position).sqrMagnitude;
+            if (dummyDistance < nearestDistance)
+            {
+                nearestDistance = dummyDistance;
+                nearestObject = component.GetComponent<T>();
+            }
+        }
+
+        return nearestObject;
+    }
+
     public static Transform[] GetAllChildren(this Transform i_Parent)
     {
         List<Transform> allChildren = new List<Transform>();

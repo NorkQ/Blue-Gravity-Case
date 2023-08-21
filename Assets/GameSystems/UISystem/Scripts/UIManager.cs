@@ -76,7 +76,7 @@ public class UIManager : Singleton<UIManager> {
         {
             if (CheckIsUIEnabled(typeof(UI_InventoryPanel)))
             {
-                CloseUI(typeof(UI_InventoryPanel));
+                OpenUI(typeof(UI_GamePanel));
             }
             else
             {

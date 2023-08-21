@@ -17,7 +17,11 @@ MonoBehaviour:
   AnimatorVerticalValueID: Vertical
   AnimatorSpeedValueID: Speed
   AnimatorDirectionValueID: Direction
-  Gameplay: 0
+  AttackRate: 0.5
+  AttackRange: 1.5
+  AttackRangeYOffset: 0.66
+  DamageData:
+    DamagaValue: 20
   UI: 0
   MovementSpeed: 3
   DefaultHead: {fileID: 21300000, guid: 468244f274f38f64b85773c7888444b6, type: 3}

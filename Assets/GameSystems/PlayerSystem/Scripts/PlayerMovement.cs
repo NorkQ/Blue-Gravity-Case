@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
 
     #region Getters and setters
     private PlayerSystemConfig m_PlayerSystemConfig => PlayerSystemConfig.Instance;
+    public eDirection Direction => m_Direction;
     #endregion
  
     [Button]

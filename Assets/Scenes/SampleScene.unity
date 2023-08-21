@@ -3131,6 +3131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a503f488a18244fba8ee717f343d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &459583445 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4357116135734987700, guid: d161680dcbeb0644ba58d926480f5e8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2460158917792610232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &479207800
 GameObject:
   m_ObjectHideFlags: 0
@@ -24068,37 +24074,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2460158916734055325, guid: d161680dcbeb0644ba58d926480f5e8c,
+    - target: {fileID: 3965829311198250165, guid: d161680dcbeb0644ba58d926480f5e8c,
         type: 3}
-      propertyPath: m_Size.x
-      value: 0.73257
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460158916734055325, guid: d161680dcbeb0644ba58d926480f5e8c,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.2050221
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460158916734055325, guid: d161680dcbeb0644ba58d926480f5e8c,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.020845562
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460158916734055325, guid: d161680dcbeb0644ba58d926480f5e8c,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.59949553
-      objectReference: {fileID: 0}
-    - target: {fileID: 4406096625372865142, guid: d161680dcbeb0644ba58d926480f5e8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4406096627524082088, guid: d161680dcbeb0644ba58d926480f5e8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+      propertyPath: m_PlayerAnimator
+      value: 
+      objectReference: {fileID: 459583445}
+    m_RemovedComponents:
+    - {fileID: 760471358760628719, guid: d161680dcbeb0644ba58d926480f5e8c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d161680dcbeb0644ba58d926480f5e8c, type: 3}
 --- !u!1001 &3412120043797507062
 PrefabInstance:
