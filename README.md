@@ -1,5 +1,4 @@
 # Blue-Gravity-Case
-
 All the codes in the project writed by me. But I have used some of my old systems. These are Pipoza package in Assets/3rdParty/Pipoza, UI System and Money System in Assets/GameSystems/. In UI System, just UIManager and UIBase comes from my old projects.
 
 <h3>Pipoza Package</h3>
