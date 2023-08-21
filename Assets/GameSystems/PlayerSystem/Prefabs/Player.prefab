@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2460158916734055327}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +382,23 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 620955187273589697}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4406096625587332008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3871841114102087785, guid: 2eaec74f43f9f8147812e52f906bbd0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 620955187273589697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &3085386078032050868
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4406096625587332008}
+  m_Enabled: 1
+  m_SortingLayerID: -105541197
+  m_SortingLayer: 3
+  m_SortingOrder: 0
 --- !u!4 &4406809570406980300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3870336486549666061, guid: 2eaec74f43f9f8147812e52f906bbd0b,
